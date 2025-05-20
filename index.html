@@ -67,17 +67,15 @@
         }
 
        // 4.「list」がクリックされたときの処理
-       taskListItems = addEventListener('click', function() {
-            // クリックされた<li>要素を取得
-            const clickedItem = event.target;
+     // 4. タスクをクリックして完了マークを切り替える処理
+taskList.addEventListener('click', function(event) {
+    const clickedItem = event.target;
 
-            // クリックされた<li>要素が完了済みでない場合、完了済みにする
-            if (!clickedItem.classList.contains('completed')) {
-                clickedItem.classList.add('completed');
-            } else {
-                clickedItem.classList.remove('completed'); // 完了済みの場合、完了を解除
-            }
-        });
+    if (clickedItem.tagName === 'LI') {
+        clickedItem.classList.toggle('completed');
+    }
+});
+
 
 
         // --- ここまでJavaScript ---
