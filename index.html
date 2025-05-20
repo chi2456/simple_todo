@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple ToDo</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
+
 <body>
 
     <div class="todo-container">
@@ -16,24 +18,29 @@
             <button id="addButton">追加</button>
         </div>
 
+        <div class="delete">
+            <button id="deleteButton">削除</button>
+        </div>
+
+
         <ul id="taskList">
 
 
-            </ul>
+        </ul>
     </div>
 
     <script>
         // --- JavaScript ---
 
         // 1. 必要なHTML要素を取得
-        
+
         //const はずっと変わらない定義
         const taskInput = document.getElementById('taskInput');
         const addButton = document.getElementById('addButton');
         const taskList = document.getElementById('taskList');
 
         // 2. 「追加」ボタンがクリックされたときの処理
-        addButton.addEventListener('click', function() {
+        addButton.addEventListener('click', function () {
             const taskText = taskInput.value.trim(); // 入力されたテキストを取得し、前後の空白を削除
 
             if (taskText !== "") { // テキストが空でなければタスクを追加
@@ -46,7 +53,7 @@
         });
 
         // (発展) Enterキーでもタスクを追加できるようにする
-        taskInput.addEventListener('keypress', function(event) {
+        taskInput.addEventListener('keypress', function (event) {
             if (event.key === 'Enter') {
                 addButton.click(); // 追加ボタンのクリックイベントを発火させる
             }
@@ -65,15 +72,18 @@
             taskList.appendChild(listItem);
         }
 
-       // 4.「list」がクリックされたときの処理
-     // 4. タスクをクリックして完了マークを切り替える処理
-taskList.addEventListener('click', function(event) {
-    const clickedItem = event.target;
+        // 4.「list」がクリックされたときの処理
+        // 4. タスクをクリックして完了マークを切り替える処理
+        taskList.addEventListener('click', function (event) {
+            const clickedItem = event.target;
 
-    if (clickedItem.tagName === 'LI') {
-        clickedItem.classList.toggle('completed'); // toggleを使っていることでifのtureとfalseを使わずに済む(この一行で両方の処理をしている)
-    }
-});
+            if (clickedItem.tagName === 'LI') {
+                clickedItem.classList.toggle('completed'); // toggleを使っていることでifのtureとfalseを使わずに済む(この一行で両方の処理をしている)
+            }
+        });
+
+        //あ
+        taskList.addEventListener('')
 
 
 
@@ -81,4 +91,5 @@ taskList.addEventListener('click', function(event) {
     </script>
 
 </body>
+
 </html>
