@@ -1,52 +1,80 @@
-<script>
-    const taskInput = document.getElementById('taskInput');
-    const addButton = document.getElementById('addButton');
-    const taskList = document.getElementById('taskList');
+<!DOCTYPE html>
+<html lang="ja">
 
-    // 「追加」ボタンがクリックされたとき
-    addButton.addEventListener('click', function () {
-        const taskText = taskInput.value.trim();
-        if (taskText !== "") {
-            addTask(taskText);
-            taskInput.value = "";
-            taskInput.focus();
-        } else {
-            alert("タスクを入力してください。");
-        }
-    });
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple ToDo</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
 
-    // Enterキーでも追加
-    taskInput.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            addButton.click();
-        }
-    });
+<body>
+    <div class="todo-container">
+        <h1>My ToDo</h1>
 
-    // タスクを追加する関数
-    function addTask(text) {
-        const listItem = document.createElement('li');
+        <div class="input-area">
+            <input type="text" id="taskInput" placeholder="新しいタスクを入力">
+            <button id="addButton">追加</button>
+        </div>
 
-        // タスクのテキスト部分（完了トグル用）
-        const textSpan = document.createElement('span');
-        textSpan.textContent = text;
-        textSpan.className = 'task-text';
+        <ul id="taskList"></ul>
+    </div>
 
-        // ✅ テキストをクリックしたときだけ完了トグル
-        textSpan.addEventListener('click', function () {
-            textSpan.classList.toggle('completed');
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const addButton = document.getElementById('addButton');
+        const taskList = document.getElementById('taskList');
+
+        // タスク追加ボタン
+        addButton.addEventListener('click', function () {
+            const taskText = taskInput.value.trim();
+            if (taskText !== "") {
+                addTask(taskText);
+                taskInput.value = "";
+                taskInput.focus();
+            } else {
+                alert("タスクを入力してください。");
+            }
         });
 
-        // 削除ボタン
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = "削除";
-        deleteBtn.className = 'delete-button';
-        deleteBtn.addEventListener('click', function () {
-            listItem.remove();
+        // Enterキーでも追加
+        taskInput.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                addButton.click();
+            }
         });
 
-        // タスクをリストに追加
-        listItem.appendChild(textSpan);
-        listItem.appendChild(deleteBtn);
-        taskList.appendChild(listItem);
-    }
-</script>
+        // タスク追加関数
+        function addTask(text) {
+            const listItem = document.createElement('li');
+
+            // テキスト表示用の span
+            const textSpan = document.createElement('span');
+            textSpan.textContent = text;
+
+            //完了したタスクの表示
+            taskList.addEventListener('click', function (event) {
+                const clickedItem = event.target;
+
+                if (clickedItem.tagName === 'LI') {
+                    clickedItem.classList.toggle('completed'); // toggleを使っていることでifのtureとfalseを使わずに済む(この一行で両方の処理をしている)
+                }
+            });
+
+            // 削除ボタン
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = "削除";
+            deleteBtn.addEventListener('click', function () {
+                listItem.remove();
+            });
+
+            // 構成： <li>[テキスト] [削除ボタン]</li>
+            listItem.appendChild(textSpan);
+            listItem.appendChild(deleteBtn);
+
+            taskList.appendChild(listItem);
+        }
+    </script>
+</body>
+
+</html>
