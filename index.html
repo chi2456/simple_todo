@@ -50,6 +50,15 @@
       const textSpan = document.createElement('span');
       textSpan.textContent = text;
 
+      //テキストをクリックしたら線引く用
+        textSpan.addEventListener('click', function () {
+            if (textSpan.style.textDecoration === "line-through") {
+            textSpan.style.textDecoration = "none";
+            } else {
+            textSpan.style.textDecoration = "line-through";
+            }
+        });
+
       // 削除ボタン
       const deleteBtn = document.createElement('button');
       deleteBtn.textContent = "削除";
