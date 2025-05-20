@@ -17,6 +17,8 @@
         </div>
 
         <ul id="taskList">
+
+
             </ul>
     </div>
 
@@ -24,9 +26,12 @@
         // --- JavaScript ---
 
         // 1. 必要なHTML要素を取得
+        
+        //const はずっと変わらない定義
         const taskInput = document.getElementById('taskInput');
         const addButton = document.getElementById('addButton');
         const taskList = document.getElementById('taskList');
+        const taskListItems = document.querySelectorAll('#taskList li');
 
         // 2. 「追加」ボタンがクリックされたときの処理
         addButton.addEventListener('click', function() {
@@ -60,6 +65,20 @@
             // 作成した<li>要素を<ul>リストに追加
             taskList.appendChild(listItem);
         }
+
+       // 4.「list」がクリックされたときの処理
+       taskListItems = addEventListener('click', function() {
+            // クリックされた<li>要素を取得
+            const clickedItem = event.target;
+
+            // クリックされた<li>要素が完了済みでない場合、完了済みにする
+            if (!clickedItem.classList.contains('completed')) {
+                clickedItem.classList.add('completed');
+            } else {
+                clickedItem.classList.remove('completed'); // 完了済みの場合、完了を解除
+            }
+        });
+
 
         // --- ここまでJavaScript ---
     </script>
