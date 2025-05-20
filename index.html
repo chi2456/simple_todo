@@ -83,10 +83,17 @@
         });
 
         //5.削除ボタンを追加
-        const delBtn = document.createElement('button');
-        delBtn.textContent = "削除";
-        delBtn.className = "task-delete-button";
+         function addTask(deleteButton) {
+            // 新しい<li>要素を作成
+            const listItem = document.createElement('li');
+            listItem.textContent = deleteButton; // <li>要素にタスクのテキストを設定
+
+                taskList.appendChild(listItem);
         
+        
+
+
+
         // --- ここまでJavaScript ---
     </script>
 
