@@ -82,13 +82,15 @@
             }
         });
 
-        //5.削除ボタンを追加
-         function addTask(deleteButton) {
-            // 新しい<li>要素を作成
-            const listItem = document.createElement('li');
-            listItem.textContent = deleteButton; // <li>要素にタスクのテキストを設定
-
-                taskList.appendChild(listItem);
+        //5.削除ボタン
+        function deleteTask() {
+            const listItems = taskList.getElementsByTagName('li');
+            for (let i = listItems.length - 1; i >= 0; i--) {
+                if (listItems[i].classList.contains('completed')) {
+                    taskList.removeChild(listItems[i]);
+                }
+            }
+        }
         
         
 
