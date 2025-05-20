@@ -84,14 +84,15 @@
         });
 
         //あ
-        const deleteButton = document.getElementById('deleteButton');
-        delete button.textContent = '削除';
+        const deletebutton = document.getElementById('deleteButton');
         deleteButton.addEventListener('click', function () {
-            const completedTasks = document.querySelectorAll('.completed');
+            const completedTasks = document.querySelectorAll('.completed'); // 完了したタスクを取得
+
             completedTasks.forEach(function (task) {
-                task.remove();
+                task.remove(); // 完了したタスクをリストから削除
             });
         });
+        
 
 
 
