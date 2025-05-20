@@ -21,6 +21,7 @@
         <div class="delete-area">
             <button id="deleteButton">削除</button>
 
+        
         </div>
 
 
@@ -74,6 +75,13 @@
             taskList.appendChild(listItem);
         }
 
+        function deleteTask() {
+            const completedTasks = taskList.querySelectorAll('li.completed');
+            completedTasks.forEach(function (task) {
+                taskList.removeChild(task);
+            });
+        }
+
         // 4.「list」がクリックされたときの処理
         // 4. タスクをクリックして完了マークを切り替える処理
         taskList.addEventListener('click', function (event) {
@@ -85,13 +93,10 @@
         });
 
         //5.削除ボタンを追加
-        const delBtn = document.createElement('button');
-        delBtn.textContent = "削除";
-        delBtn.className = "task-delete-button";
+        
 
-            }
-
-
+        
+        
 
 
 
