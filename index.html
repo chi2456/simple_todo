@@ -31,7 +31,6 @@
         const taskInput = document.getElementById('taskInput');
         const addButton = document.getElementById('addButton');
         const taskList = document.getElementById('taskList');
-        const taskListItems = document.querySelectorAll('#taskList li');
 
         // 2. 「追加」ボタンがクリックされたときの処理
         addButton.addEventListener('click', function() {
@@ -72,7 +71,7 @@ taskList.addEventListener('click', function(event) {
     const clickedItem = event.target;
 
     if (clickedItem.tagName === 'LI') {
-        clickedItem.classList.toggle('completed');
+        clickedItem.classList.toggle('completed'); // toggleを使っていることでifのtureとfalseを使わずに済む(この一行で両方の処理をしている)
     }
 });
 
