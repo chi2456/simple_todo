@@ -17,7 +17,9 @@
             <input type="text" id="taskInput" placeholder="新しいタスクを入力">
             <button id="addButton">追加</button>
         </div>
-
+        //deldeteボタンを追加
+        <div class="delete-area">
+            <button id="deleteButton">削除</button>
         
         </div>
 
@@ -82,20 +84,14 @@
             }
         });
 
-        //5.タスクリストにボタンを追加
-        function addDeleteButton(listItem) {
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = '追加';
-            deleteButton.classList.add('delete-button');
+        //5.削除ボタンを追加
+        function addTask(deleteButton) {
+            // 新しい<li>要素を作成
+            const listItem = document.createElement('li');
+            listItem.textContent = deleteButton; // <li>要素にタスクのテキストを設定
 
-            // 削除ボタンがクリックされたときの処理
-            deleteButton.addEventListener('click', function (event) {
-                event.stopPropagation(); // <li>のクリックイベントをキャンセル
-                listItem.remove(); // タスクを削除
-            });
-
-            listItem.appendChild(deleteButton); // <li>要素に削除ボタンを追加
-        }
+                taskList.appendChild(listItem);
+            }
         
         
 
